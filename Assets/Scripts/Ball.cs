@@ -6,9 +6,24 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     private Rigidbody m_Rigidbody;
+    private GameObject gameManager;
 
     void Start()
     {
+        gameManager = GameObject.Find("GameManager");
+        int size = gameManager.GetComponent<GameManager>().ballSize;
+        switch( size )
+        {
+            case 0:
+                transform.localScale *= 0.5f;
+                break;
+            //            case 1:
+            // transform.localScale *= 2.0f;
+            //                break;
+            case 2:
+                transform.localScale *= 2.0f;
+                break;
+        }
         m_Rigidbody = GetComponent<Rigidbody>();
     }
     
